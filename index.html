@@ -16,7 +16,6 @@
     --muted: rgba(255,255,255,.72);
     --accent:#ff5c93;
     --accent2:#7c5cff;
-    --gold:#ffd166;
   }
 
   *{box-sizing:border-box}
@@ -28,7 +27,6 @@
     background:
       radial-gradient(900px 600px at 12% 18%, rgba(255,92,147,.18), transparent 55%),
       radial-gradient(900px 600px at 84% 22%, rgba(124,92,255,.18), transparent 55%),
-      radial-gradient(800px 520px at 50% 105%, rgba(255,209,102,.10), transparent 55%),
       linear-gradient(160deg, var(--bg1), var(--bg2));
     padding:18px;
     overflow-x:hidden;
@@ -143,7 +141,6 @@
     transition: transform .12s ease, filter .12s ease;
     user-select:none;
   }
-  .btn:hover{transform: translateY(-1px); filter:brightness(1.06);}
   .btn:active{transform: translateY(0px); filter:brightness(.98);}
 
   .hidden{display:none;}
@@ -170,15 +167,8 @@
   }
   .center{text-align:center}
 
+  /* Spotify */
   .musicCard{margin-top:12px;}
-  .frame{
-    margin-top:10px;
-    border-radius:16px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.14);
-    background: rgba(0,0,0,.12);
-  }
-  iframe{display:block; width:100%;}
   .musicTitle{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
   .tag{
     font-size:12px;
@@ -188,7 +178,16 @@
     border-radius:999px;
     background: rgba(255,255,255,.04);
   }
+  .frame{
+    margin-top:10px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.12);
+  }
+  iframe{display:block; width:100%; border:0;}
 
+  /* FX */
   .fx{
     position:fixed;
     inset:0;
@@ -304,51 +303,51 @@
         </div>
 
         <div class="box" style="margin-top:14px;">
-          <h2>Nossas músicas 🎶</h2>
-          <p class="sub">Compatível com iPhone (sem autoplay).</p>
+          <h2>Nossas músicas 🎧</h2>
+          <p class="sub">Spotify costuma rodar melhor no iPhone. (É só dar play.)</p>
 
+          <!-- 1) Romântico - Henrique & Juliano -->
           <div class="musicCard">
             <div class="musicTitle">
-              <strong>1) Música 1</strong>
-              <span class="tag">play no iPhone ✅</span>
+              <strong>1) Romântico — Henrique & Juliano</strong>
+              <span class="tag">Spotify ✅</span>
             </div>
             <div class="frame">
-              <iframe height="220"
-                src="https://open.spotify.com/track/7FdGeazienHpcYz9KYAuWW?si=9G9VA4ChTZ-j39GkVYdTvw"
-                title="Nossa música"
-                frameborder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+              <iframe
+                src="https://open.spotify.com/embed/track/02qVRIwGx1uUm6V0v4QXzd?utm_source=generator"
+                height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
             </div>
           </div>
 
+          <!-- 2) Vitamina C - Suel, Grupo Menos É Mais -->
           <div class="musicCard">
             <div class="musicTitle">
-              <strong>2) Música 2</strong>
-              <span class="tag">play no iPhone ✅</span>
+              <strong>2) Vitamina C — Menos é Mais</strong>
+              <span class="tag">Spotify ✅</span>
             </div>
             <div class="frame">
-              <iframe height="220"
-                src="https://open.spotify.com/track/5xWH8iqeI9if3hPzAtrf1n?si=riLXc6u1RVGjM__pUR5C0g"
-                title="Vitamina C"
-                frameborder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+              <iframe
+                src="https://open.spotify.com/embed/track/2jpbtp5N679x92uB8s8p9h?utm_source=generator"
+                height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
             </div>
           </div>
 
+          <!-- 3) O Céu Explica Tudo - Henrique & Juliano -->
           <div class="musicCard">
             <div class="musicTitle">
-              <strong>3) Música 3</strong>
-              <span class="tag">play no iPhone ✅</span>
+              <strong>3) O Céu Explica Tudo — Henrique & Juliano</strong>
+              <span class="tag">Spotify ✅</span>
             </div>
             <div class="frame">
-              <iframe height="220"
-                src="https://open.spotify.com/track/7so0lgd0zP2Sbgs2d7a1SZ?si=lyTHjyaUTLCNHgjGbAwBog"
-                title="Música 3"
-                frameborder="0"
-                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
+              <iframe
+                src="https://open.spotify.com/embed/track/7bmXW8Wvp232V4DXUymH6W?utm_source=generator"
+                height="152"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"></iframe>
             </div>
           </div>
 
@@ -365,10 +364,10 @@
   const ANIVER_MES_INDEX = 1; // 1=fevereiro (0=jan)
 
   const MENSAGEM =
-    "Hoje é o seu dia — e eu só queria te desejar tudo de mais bonito. " +
+    "Hoje é o seu dia e eu só queria te desejar tudo de mais bonito. " +
     "Que Deus te abençoe, te dê paz e te faça sorrir muito. " +
-    "Eu gosto de você e gosto do que a gente vive: da música no carro, " +
-    "das horas no parque, do jeito leve que a gente se entende. " +
+    "Eu gosto de você e gosto do que a gente vive: da músicas no carro cantadas, " +
+    "das horas passadas juntos,dos abraços e beijos e o principal da sua companhia " 
     "Que essa nova fase seja leve, próspera e cheia de coisas boas. 💗";
 
   // UI
@@ -436,7 +435,7 @@
   function celebrate(){
     const holder = document.getElementById("fx");
     holder.innerHTML = "";
-    const pieces = 60;
+    const pieces = 55;
     const emojis = ["💗","✨","🎉","💖","🌙"];
 
     for(let i=0;i<pieces;i++){
@@ -444,7 +443,7 @@
       el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
       el.style.left = (Math.random()*100) + "vw";
       el.style.fontSize = (14 + Math.random()*18) + "px";
-      el.style.animationDuration = (2.6 + Math.random()*2.3) + "s";
+      el.style.animationDuration = (2.6 + Math.random()*2.1) + "s";
       el.style.animationDelay = (Math.random()*0.25) + "s";
       holder.appendChild(el);
     }
