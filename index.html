@@ -1,0 +1,455 @@
+# larice-aniversario
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Feliz aniversário, Larice 💗</title>
+
+<style>
+  :root{
+    --bg1:#0b0f1a;
+    --bg2:#120a16;
+    --card: rgba(255,255,255,.06);
+    --line: rgba(255,255,255,.14);
+    --txt: rgba(255,255,255,.92);
+    --muted: rgba(255,255,255,.72);
+    --accent:#ff5c93;
+    --accent2:#7c5cff;
+    --gold:#ffd166;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    color:var(--txt);
+    background:
+      radial-gradient(900px 600px at 12% 18%, rgba(255,92,147,.18), transparent 55%),
+      radial-gradient(900px 600px at 84% 22%, rgba(124,92,255,.18), transparent 55%),
+      radial-gradient(800px 520px at 50% 105%, rgba(255,209,102,.10), transparent 55%),
+      linear-gradient(160deg, var(--bg1), var(--bg2));
+    padding:18px;
+    overflow-x:hidden;
+  }
+
+  .wrap{width:min(980px, 100%); margin:0 auto;}
+  .card{
+    position:relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    padding: 22px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.42);
+    backdrop-filter: blur(10px);
+    overflow:hidden;
+  }
+
+  .glow{
+    position:absolute;
+    inset:-180px -180px auto auto;
+    width:380px;height:380px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,92,147,.28), transparent 58%),
+                radial-gradient(circle at 70% 60%, rgba(124,92,255,.22), transparent 60%);
+    filter: blur(20px);
+    pointer-events:none;
+  }
+
+  .top{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+  }
+
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 12px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background: rgba(255,255,255,.05);
+    font-size:14px;
+    color:var(--muted);
+  }
+  .dot{
+    width:10px;height:10px;border-radius:50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 0 18px rgba(255,92,147,.35);
+  }
+
+  h1{
+    margin:10px 0 6px;
+    font-size: clamp(28px, 4.2vw, 44px);
+    letter-spacing:.2px;
+    text-align:center;
+  }
+  .lead{
+    text-align:center;
+    margin:0 auto;
+    color:var(--muted);
+    line-height:1.6;
+    max-width: 62ch;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:14px;
+    margin-top:16px;
+  }
+  @media(min-width:860px){
+    .grid{grid-template-columns: 1.05fr .95fr;}
+  }
+
+  .box{
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:16px;
+    background: rgba(255,255,255,.04);
+  }
+  .box h2{
+    margin:0 0 8px;
+    font-size: 16px;
+    letter-spacing:.2px;
+    color:rgba(255,255,255,.88);
+  }
+  .sub{color:var(--muted); font-size:13px; line-height:1.5}
+
+  .row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center}
+  .pill{
+    padding:8px 10px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background: rgba(0,0,0,.12);
+    color:rgba(255,255,255,.84);
+    font-size:13px;
+  }
+
+  .btn{
+    appearance:none;
+    border:0;
+    cursor:pointer;
+    padding:12px 14px;
+    border-radius:14px;
+    color:white;
+    font-weight:800;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 12px 30px rgba(255,92,147,.18);
+    transition: transform .12s ease, filter .12s ease;
+    user-select:none;
+  }
+  .btn:hover{transform: translateY(-1px); filter:brightness(1.06);}
+  .btn:active{transform: translateY(0px); filter:brightness(.98);}
+
+  .hidden{display:none;}
+  .reveal{
+    margin-top:12px;
+    border-left: 3px solid rgba(255,92,147,.55);
+    padding-left: 12px;
+    color: rgba(255,255,255,.92);
+    animation: fadeIn .25s ease-out;
+  }
+  @keyframes fadeIn{
+    from{opacity:0; transform: translateY(4px)}
+    to{opacity:1; transform: translateY(0)}
+  }
+  .big{font-size: 18px; line-height:1.65; color: rgba(255,255,255,.92);}
+
+  .timer{
+    font-variant-numeric: tabular-nums;
+    font-size: 32px;
+    letter-spacing: .6px;
+    margin: 6px 0 2px;
+    color: rgba(255,255,255,.95);
+    text-align:center;
+  }
+  .center{text-align:center}
+
+  .musicCard{margin-top:12px;}
+  .frame{
+    margin-top:10px;
+    border-radius:16px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.14);
+    background: rgba(0,0,0,.12);
+  }
+  iframe{display:block; width:100%;}
+  .musicTitle{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;}
+  .tag{
+    font-size:12px;
+    color: rgba(255,255,255,.78);
+    padding:6px 10px;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:999px;
+    background: rgba(255,255,255,.04);
+  }
+
+  .fx{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .fx i{
+    position:absolute;
+    top:-20px;
+    font-style:normal;
+    opacity:.95;
+    animation: fall linear forwards;
+    transform: translateY(0);
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,.25));
+  }
+  @keyframes fall{
+    to{
+      transform: translateY(110vh) rotate(520deg);
+      opacity: .95;
+    }
+  }
+
+  .footer{
+    margin-top:14px;
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .link{
+    color: rgba(255,255,255,.86);
+    text-decoration:none;
+    border-bottom:1px dashed rgba(255,255,255,.35);
+    cursor:pointer;
+  }
+</style>
+</head>
+
+<body>
+<div class="fx" id="fx"></div>
+
+<div class="wrap">
+  <div class="card">
+    <div class="glow"></div>
+
+    <div class="top">
+      <div class="badge"><span class="dot"></span> versão premium</div>
+      <div class="badge" id="today"></div>
+    </div>
+
+    <h1>Feliz aniversário, Larice 🎂💗</h1>
+    <p class="lead">
+      Fiz esse cantinho só pra você. Simples, bonito e com carinho — do meu jeito.
+    </p>
+
+    <div class="grid">
+      <!-- ESQUERDA -->
+      <div class="box">
+        <h2>Larice 💗</h2>
+        <p class="sub">Eu gosto do nosso “jeito”: carro no parque, música, e o tempo passando voando.</p>
+
+        <div class="row">
+          <span class="pill">🎶 música no carro</span>
+          <span class="pill">🌙 parque da cidade</span>
+          <span class="pill">💗 paz</span>
+        </div>
+
+        <div class="box" style="margin-top:14px;">
+          <h2>Uma mensagem pra você</h2>
+          <p class="sub">Clica para abrir (vai cair coraçãozinho 😏).</p>
+
+          <div class="row" style="margin-top:12px;">
+            <button class="btn" id="btnReveal">Abrir mensagem</button>
+            <span class="pill">leve</span>
+            <span class="pill">romântico</span>
+            <span class="pill">com intenção</span>
+          </div>
+
+          <div class="reveal hidden" id="msg">
+            <p class="big" id="msgText"></p>
+            <p class="sub" style="margin-top:10px">— do Vitor, pra você 🙂</p>
+          </div>
+        </div>
+
+        <div class="box" style="margin-top:14px;">
+          <h2>Três desejos pra você hoje</h2>
+          <div class="row">
+            <span class="pill">✨ paz</span>
+            <span class="pill">🙏 bênçãos</span>
+            <span class="pill">💛 alegrias</span>
+            <span class="pill">🌟 conquistas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIREITA -->
+      <div class="box">
+        <h2 class="center">Contagem pro dia 24 ✨</h2>
+        <p class="sub center">Só pra entrar no clima.</p>
+
+        <div class="timer" id="countdown">--d --:--:--</div>
+        <p class="sub center" id="countdownSub">calculando…</p>
+
+        <div class="row" style="justify-content:center;">
+          <span class="pill" id="datePill">24/02</span>
+          <span class="pill" id="statusPill">contando os dias…</span>
+        </div>
+
+        <div class="footer">
+          <span class="sub">Se você quiser…</span>
+          <a class="link" id="cta">eu te levo pra comemorar 😌</a>
+        </div>
+
+        <div class="box" style="margin-top:14px;">
+          <h2>Nossas músicas 🎶</h2>
+          <p class="sub">Compatível com iPhone (sem autoplay).</p>
+
+          <div class="musicCard">
+            <div class="musicTitle">
+              <strong>1) Música 1</strong>
+              <span class="tag">play no iPhone ✅</span>
+            </div>
+            <div class="frame">
+              <iframe height="220"
+                src="https://open.spotify.com/track/7FdGeazienHpcYz9KYAuWW?si=9G9VA4ChTZ-j39GkVYdTvw"
+                title="Nossa música"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="musicCard">
+            <div class="musicTitle">
+              <strong>2) Música 2</strong>
+              <span class="tag">play no iPhone ✅</span>
+            </div>
+            <div class="frame">
+              <iframe height="220"
+                src="https://open.spotify.com/track/5xWH8iqeI9if3hPzAtrf1n?si=riLXc6u1RVGjM__pUR5C0g"
+                title="Vitamina C"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="musicCard">
+            <div class="musicTitle">
+              <strong>3) Música 3</strong>
+              <span class="tag">play no iPhone ✅</span>
+            </div>
+            <div class="frame">
+              <iframe height="220"
+                src="https://open.spotify.com/track/7so0lgd0zP2Sbgs2d7a1SZ?si=lyTHjyaUTLCNHgjGbAwBog"
+                title="Música 3"
+                frameborder="0"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // CONFIG
+  const NOME = "Larice";
+  const ANIVER_DIA = 24;
+  const ANIVER_MES_INDEX = 1; // 1=fevereiro (0=jan)
+
+  const MENSAGEM =
+    "Hoje é o seu dia — e eu só queria te desejar tudo de mais bonito. " +
+    "Que Deus te abençoe, te dê paz e te faça sorrir muito. " +
+    "Eu gosto de você e gosto do que a gente vive: da música no carro, " +
+    "das horas no parque, do jeito leve que a gente se entende. " +
+    "Que essa nova fase seja leve, próspera e cheia de coisas boas. 💗";
+
+  // UI
+  document.title = `Feliz aniversário, ${NOME} 💗`;
+  document.getElementById("msgText").textContent = MENSAGEM;
+
+  document.getElementById("today").textContent =
+    new Date().toLocaleDateString("pt-BR", { weekday:"long", year:"numeric", month:"long", day:"numeric" });
+
+  // CTA
+  const cta = document.getElementById("cta");
+  cta.addEventListener("click", (e) => {
+    e.preventDefault();
+    cta.textContent = "Fechado. Você escolhe a música 😏";
+    setTimeout(() => cta.textContent = "eu te levo pra comemorar 😌", 2500);
+  });
+
+  // Reveal + FX
+  const btn = document.getElementById("btnReveal");
+  const msg = document.getElementById("msg");
+  btn.addEventListener("click", () => {
+    const isHidden = msg.classList.toggle("hidden");
+    btn.textContent = isHidden ? "Abrir mensagem" : "Fechar mensagem";
+    if(!isHidden) celebrate();
+  });
+
+  // Countdown
+  const countdownEl = document.getElementById("countdown");
+  const countdownSub = document.getElementById("countdownSub");
+  const datePill = document.getElementById("datePill");
+  const statusPill = document.getElementById("statusPill");
+
+  function nextBirthdayDate(){
+    const now = new Date();
+    const year = now.getFullYear();
+    let target = new Date(year, ANIVER_MES_INDEX, ANIVER_DIA, 0, 0, 0);
+    if (target.getTime() < now.getTime()){
+      target = new Date(year + 1, ANIVER_MES_INDEX, ANIVER_DIA, 0, 0, 0);
+    }
+    return target;
+  }
+
+  function pad(n){ return String(n).padStart(2,"0"); }
+
+  function tick(){
+    const target = nextBirthdayDate();
+    const now = new Date();
+    const diff = target.getTime() - now.getTime();
+
+    const d = Math.max(0, Math.floor(diff / (1000*60*60*24)));
+    const h = Math.max(0, Math.floor((diff / (1000*60*60)) % 24));
+    const m = Math.max(0, Math.floor((diff / (1000*60)) % 60));
+    const s = Math.max(0, Math.floor((diff / 1000) % 60));
+
+    countdownEl.textContent = `${d}d ${pad(h)}:${pad(m)}:${pad(s)}`;
+    datePill.textContent = `${pad(ANIVER_DIA)}/${pad(ANIVER_MES_INDEX+1)}`;
+
+    statusPill.textContent = (d === 0) ? "é hoje! 💗" : "contando os dias…";
+    countdownSub.textContent = "pra comemorar do jeito certo 🙂";
+  }
+  setInterval(tick, 1000);
+  tick();
+
+  // Premium FX (iPhone friendly)
+  function celebrate(){
+    const holder = document.getElementById("fx");
+    holder.innerHTML = "";
+    const pieces = 60;
+    const emojis = ["💗","✨","🎉","💖","🌙"];
+
+    for(let i=0;i<pieces;i++){
+      const el = document.createElement("i");
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.left = (Math.random()*100) + "vw";
+      el.style.fontSize = (14 + Math.random()*18) + "px";
+      el.style.animationDuration = (2.6 + Math.random()*2.3) + "s";
+      el.style.animationDelay = (Math.random()*0.25) + "s";
+      holder.appendChild(el);
+    }
+    setTimeout(() => { holder.innerHTML = ""; }, 5200);
+  }
+</script>
+</body>
+</html>
